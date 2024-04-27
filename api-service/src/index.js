@@ -2,6 +2,8 @@ const express = require('express');
 
 const app = express();
 
+require('./db')
+
 require('./routes')(app);
 
 app.listen(3000, () => {

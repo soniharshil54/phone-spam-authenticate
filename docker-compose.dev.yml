@@ -20,7 +20,12 @@ services:
           cpus: ${APISERVICE_RESOURCES_RESERVATIONS_CPUS:-1}
           memory: ${APISERVICE_RESOURCES_RESERVATIONS_MEMORY:-2G} 
     environment:
-      - PORT=3000
+      PORT: 3000
+      DB_HOST: postgres-db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: secret    
+      DB_NAME: phone-spam
     image: phone-spam-api-service-dev:latest
     restart: always
     ports:
@@ -30,6 +35,28 @@ services:
     volumes:
       - ./api-service:/usr/src/app
     command: npm run start:dev
+
+  postgres-db:
+    container_name: phone-spam-postgres-db
+    image: postgres:15.2-alpine3.17
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: phone_spam
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data:rw
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+    networks:
+      - phone-spam-network
     
 networks:
   phone-spam-network:
