@@ -1,0 +1,35 @@
+version: '3.7'
+# name: phone-spam
+services:
+  api-service:
+    build:
+      context: api-service/
+      dockerfile: Dockerfile
+    healthcheck:
+      test: curl -f http://localhost:3000/api/v1/healthcheck || exit 1
+      interval: 10s
+      timeout: 30s
+      retries: 3
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          cpus: ${APISERVICE_RESOURCES_LIMITS_CPUS:-2}
+          memory: ${APISERVICE_RESOURCES_LIMITS_MEMORY:-4G}
+        reservations:
+          cpus: ${APISERVICE_RESOURCES_RESERVATIONS_CPUS:-1}
+          memory: ${APISERVICE_RESOURCES_RESERVATIONS_MEMORY:-2G} 
+    environment:
+      - PORT=3000
+    image: phone-spam-api-service-prod:latest
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - phone-spam-network
+    command: npm run start
+    
+networks:
+  phone-spam-network:
+    name: phone-spam-network
+    driver: bridge
