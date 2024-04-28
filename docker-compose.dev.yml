@@ -18,14 +18,14 @@ services:
           memory: ${APISERVICE_RESOURCES_LIMITS_MEMORY:-4G}
         reservations:
           cpus: ${APISERVICE_RESOURCES_RESERVATIONS_CPUS:-1}
-          memory: ${APISERVICE_RESOURCES_RESERVATIONS_MEMORY:-2G} 
+          memory: ${APISERVICE_RESOURCES_RESERVATIONS_MEMORY:-2G}
     environment:
       PORT: 3000
       DB_HOST: postgres-db
       DB_PORT: 5432
       DB_USER: postgres
-      DB_PASSWORD: secret    
-      DB_NAME: phone-spam
+      DB_PASSWORD: secret
+      DB_NAME: phone_spam
     image: phone-spam-api-service-dev:latest
     restart: always
     ports:
@@ -46,7 +46,7 @@ services:
     volumes:
       - ./postgres-data:/var/lib/postgresql/data:rw
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -57,7 +57,7 @@ services:
       - "5432:5432"
     networks:
       - phone-spam-network
-    
+
 networks:
   phone-spam-network:
     name: phone-spam-network
