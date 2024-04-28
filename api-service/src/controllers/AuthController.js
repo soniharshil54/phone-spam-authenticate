@@ -6,4 +6,10 @@ module.exports = {
     const user = await AuthService.createUser(params);
     return res.ok(user);
   },
+
+  async logIn(req, res) {
+    const params = { ...req.body };
+    const loginData = await AuthService.loginUser(params);
+    return res.ok(loginData);
+  }
 }

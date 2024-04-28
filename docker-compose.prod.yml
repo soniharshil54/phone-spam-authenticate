@@ -29,6 +29,7 @@ services:
       DB_USER: postgres
       DB_PASSWORD: secret
       DB_NAME: phone_spam
+      JWT_SECRET: ${JWT_SECRET}
     image: phone-spam-api-service-prod:latest
     restart: always
     ports:
