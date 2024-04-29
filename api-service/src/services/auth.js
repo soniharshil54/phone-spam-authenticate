@@ -1,7 +1,8 @@
+// services/auth.js
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const User = require('../db/models/User');
+const { User } = require('../db/models');
 
 module.exports = {
   async createUser(user) {
