@@ -25,6 +25,8 @@ module.exports = (sequelize) => {
       allowNull: false
     },
   }, {
+    modelName: "Contact",
+    tableName: "Contacts",
     timestamps: true
   });
 
