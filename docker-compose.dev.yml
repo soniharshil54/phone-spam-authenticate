@@ -38,7 +38,7 @@ services:
       - phone-spam-network
     volumes:
       - ./api-service:/usr/src/app
-    command: /bin/sh -c "sequelize db:migrate && npm run start:dev"
+    command: /bin/sh -c "sequelize db:migrate && sequelize db:seed:all && npm run start:dev"
 
   postgres-db:
     container_name: phone-spam-postgres-db
