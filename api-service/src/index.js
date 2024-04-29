@@ -7,7 +7,7 @@ const app = express();
 
 app.use(express.json());
 
-require('./db')
+// require('./db')
 
 require('./routes')(app);
 

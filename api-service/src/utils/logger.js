@@ -59,7 +59,7 @@ winston.loggers.add('app-logs', {
   humanReadableUnhandledException: true,
   transports: [
     new winston.transports.Console(),
-    WinstonFileLogs(),
+    // WinstonFileLogs(),
   ],
 });
 

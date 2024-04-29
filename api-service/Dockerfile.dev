@@ -3,5 +3,7 @@ WORKDIR /usr/src/app
 
 RUN npm install -g nodemon
 
+RUN npm install sequelize-cli -g
+
 EXPOSE 3000
 CMD ["nodemon", "src/index.js"]
