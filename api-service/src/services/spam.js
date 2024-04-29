@@ -1,4 +1,4 @@
-const SpamReport = require('../db/models/SpamReport');
+const { SpamReport } = require('../db/models');
 
 module.exports = {
   async markAsSpam(phoneNumber) {

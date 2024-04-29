@@ -19,6 +19,8 @@ module.exports = (sequelize) => {
       allowNull: false
     }
   }, {
+    modelName: "SpamReport",
+    tableName: "SpamReports",
     timestamps: true
   });
 
