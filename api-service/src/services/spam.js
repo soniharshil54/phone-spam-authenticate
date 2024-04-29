@@ -17,4 +17,22 @@ module.exports = {
       });
     }
   },
+
+  async isSpam(phoneNumber) {
+    const spamReport = await SpamReport.findOne({
+      where: {
+        phoneNumber
+      }
+    });
+    if (!spamReport) {
+      return {
+        isSpam: false,
+        reportCount: 0
+      };
+    }
+    return {
+      isSpam: spamReport.reportCount ? true : false,
+      reportCount: spamReport.reportCount
+    };
+  },
 }
