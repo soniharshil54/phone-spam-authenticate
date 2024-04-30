@@ -30,6 +30,7 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: phone_spam
       JWT_SECRET: ${JWT_SECRET}
+      ENVIRONMENT: development
     image: phone-spam-api-service-dev:latest
     restart: always
     ports:
