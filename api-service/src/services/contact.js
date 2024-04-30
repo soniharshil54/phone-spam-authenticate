@@ -27,12 +27,12 @@ module.exports = {
   },
 
   async searchContactsByNumber(phoneNumber) {
-    const user = await User.findOne({
-      where: { phoneNumber }
+    const contact = await Contact.findOne({
+      where: { phoneNumber, isRegistered: true}
     });
 
-    if (user) {
-      return [user];
+    if (contact) {
+      return [contact];
     } else {
       const contacts = await Contact.findAll({
         where: { phoneNumber }
