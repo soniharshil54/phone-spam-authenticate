@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const {asyncHandler} = require('../utils/asyncHandler')
+
 const AuthController = require('../controllers/AuthController');
 
 /**
@@ -31,7 +33,7 @@ const AuthController = require('../controllers/AuthController');
  *       400:
  *         description: Error in request.
  */
-router.post('/sign-up', AuthController.signUp);
+router.post('/sign-up', asyncHandler(AuthController.signUp));
 
 /**
  * @openapi
@@ -57,6 +59,6 @@ router.post('/sign-up', AuthController.signUp);
  *       401:
  *         description: Unauthorized.
  */
-router.post('/login', AuthController.logIn);
+router.post('/login', asyncHandler(AuthController.logIn));
 
 module.exports = router;

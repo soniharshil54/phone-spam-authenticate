@@ -2,6 +2,7 @@
 const express = require('express');
 
 const logger = require('./utils/logger');
+const errorHandler = require('./middlewares/error')
 
 const app = express();
 
@@ -23,6 +24,8 @@ process
         logger.error(JSON.stringify(process.memoryUsage()));
         process.exit(1);
     });
+
+app.use(errorHandler);
 
 app.listen(3000, () => {
     logger.info('API Service is running on port 3000');

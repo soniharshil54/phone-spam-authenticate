@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const {asyncHandler} = require('../utils/asyncHandler')
+
 const SpamController = require('../controllers/SpamController');
 
 /**
@@ -40,6 +42,6 @@ const SpamController = require('../controllers/SpamController');
  *       401:
  *         description: Unauthorized if the user is not authenticated.
  */
-router.post('/mark-as-spam', SpamController.markAsSpam);
+router.post('/mark-as-spam', asyncHandler(SpamController.markAsSpam));
 
 module.exports = router;

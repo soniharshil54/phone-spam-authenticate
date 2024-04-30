@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const {asyncHandler} = require('../utils/asyncHandler')
+
 const ContactController = require('../controllers/ContactController');
 
 /**
@@ -26,7 +28,7 @@ const ContactController = require('../controllers/ContactController');
  *       401:
  *         description: Unauthorized access.
  */
-router.get('/search-by-name', ContactController.searchContactsByName);
+router.get('/search-by-name', asyncHandler(ContactController.searchContactsByName));
 
 /**
  * @openapi
@@ -51,7 +53,7 @@ router.get('/search-by-name', ContactController.searchContactsByName);
  *       401:
  *         description: Unauthorized access.
  */
-router.get('/search-by-number', ContactController.searchContactsByNumber);
+router.get('/search-by-number', asyncHandler(ContactController.searchContactsByNumber));
 
 /**
  * @openapi
@@ -76,6 +78,6 @@ router.get('/search-by-number', ContactController.searchContactsByNumber);
  *       401:
  *         description: Unauthorized access.
  */
-router.get('/get-contact', ContactController.getContact);
+router.get('/get-contact', asyncHandler(ContactController.getContact));
 
 module.exports = router;
