@@ -12,13 +12,17 @@ module.exports = {
       password: await this.encryptPassword(user.password)
     }
     const newUserRecord = await User.create(userData);
+    const userDataWithoutPassword = {
+      ...newUserRecord.get(),
+      password: undefined // Or you can use null if you prefer
+    };
     await Contact.create({
       ownerId: newUserRecord.id,
       name: newUserRecord.name,
       phoneNumber: newUserRecord.phoneNumber,
       isRegistered: true
     });
-    return newUserRecord;
+    return userDataWithoutPassword;
   },
 
   async loginUser(userCredential) {
@@ -31,9 +35,13 @@ module.exports = {
     if (!passwordMatch) {
       throw new Error('Invalid password');
     }
+    const userDataWithoutPassword = {
+      ...userRecord.get(),
+      password: undefined // Or you can use null if you prefer
+    };
     const token = this.signToken(userRecord);
     return {
-      user: userRecord,
+      user: userDataWithoutPassword,
       token
     }
   },
