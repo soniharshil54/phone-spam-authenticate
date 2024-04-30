@@ -27,6 +27,6 @@ process
 
 app.use(errorHandler);
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     logger.info('API Service is running on port 3000');
 });
