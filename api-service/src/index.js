@@ -1,11 +1,13 @@
 /* eslint-disable no-undef */
 const express = require('express');
+const cors = require('cors')
 
 const logger = require('./utils/logger');
 const errorHandler = require('./middlewares/error')
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 // require('./db')
