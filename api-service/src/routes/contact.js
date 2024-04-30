@@ -7,6 +7,8 @@ const ContactController = require('../controllers/ContactController');
  * @openapi
  * /api/v1/contact/search-by-name:
  *   get:
+ *     security:
+ *       - BearerAuth: []
  *     tags:
  *       - Contacts
  *     summary: Search for contacts by name
@@ -30,6 +32,8 @@ router.get('/search-by-name', ContactController.searchContactsByName);
  * @openapi
  * /api/v1/contact/search-by-number:
  *   get:
+ *     security:
+ *       - BearerAuth: []
  *     tags:
  *       - Contacts
  *     summary: Search for contacts by phone number
@@ -53,6 +57,8 @@ router.get('/search-by-number', ContactController.searchContactsByNumber);
  * @openapi
  * /api/v1/contact/get-contact:
  *   get:
+ *     security:
+ *       - BearerAuth: []
  *     tags:
  *       - Contacts
  *     summary: Get a specific contact by ID

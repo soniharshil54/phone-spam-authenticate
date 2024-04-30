@@ -7,6 +7,8 @@ const SpamController = require('../controllers/SpamController');
  * @openapi
  * /api/v1/spam/mark-as-spam:
  *   post:
+ *     security:
+ *       - BearerAuth: []
  *     tags:
  *       - Spam
  *     summary: Mark a phone number as spam
