@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const { User } = require('../db/models');
+const { Contact } = require('../db/models');
 
 module.exports = {
   async createUser(user) {
@@ -11,6 +12,12 @@ module.exports = {
       password: await this.encryptPassword(user.password)
     }
     const newUserRecord = await User.create(userData);
+    await Contact.create({
+      ownerId: newUserRecord.id,
+      name: newUserRecord.name,
+      phoneNumber: newUserRecord.phoneNumber,
+      isRegistered: true
+    });
     return newUserRecord;
   },
 

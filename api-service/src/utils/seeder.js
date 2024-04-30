@@ -23,6 +23,7 @@ async function seedContacts(count = 300) {
         ownerId: user.id,
         name: faker.person.fullName(),
         phoneNumber: faker.phone.number(),
+        isRegistered: false,
       });
     }
   });
