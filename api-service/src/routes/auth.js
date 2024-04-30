@@ -20,9 +20,9 @@ const AuthController = require('../controllers/AuthController');
  *               name:
  *                 type: string
  *               phoneNumber:
- *                 type: String
+ *                 type: string
  *               email:
- *                 type: String
+ *                 type: string
  *               password:
  *                 type: string
  *     responses:
