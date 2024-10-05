@@ -1,7 +1,7 @@
 module.exports = {
     healthcheck: (req, res) => {
         res.ok({
-            status: 'ok 3',
+            status: 'ok 4',
         });
     }
 }
