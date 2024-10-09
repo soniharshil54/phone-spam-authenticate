@@ -37,7 +37,7 @@ services:
       - 3000:3000
     networks:
       - phone-spam-network
-    command: /bin/sh -c "sequelize db:migrate && sequelize db:seed:all && npm run start"
+    command: /bin/sh -c "npm run start"
 
   postgres-db:
     container_name: phone-spam-postgres-db
