@@ -2,7 +2,7 @@ module.exports = {
     healthcheck: (req, res) => {
         res.ok({
             status: 'ok 6',
-            version: '1.3.0'
+            version: 'v1.2.19'
         });
     }
 }
